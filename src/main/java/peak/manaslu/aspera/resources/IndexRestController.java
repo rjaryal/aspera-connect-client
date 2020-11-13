@@ -12,8 +12,7 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 
 @Path("/")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
-@Produces({MediaType.APPLICATION_JSON})
+@Produces({MediaType.TEXT_HTML})
 public class IndexRestController {
 
     private final String applicationContextPath;
@@ -24,7 +23,6 @@ public class IndexRestController {
 
     @GET
     @Timed
-    @Produces({MediaType.TEXT_HTML})
     public Response home() {
         return Response.seeOther(URI.create("/index.html")).build();
     }
@@ -32,7 +30,6 @@ public class IndexRestController {
     @GET
     @Timed
     @Path("index.html")
-    @Produces({MediaType.TEXT_HTML})
     public View index() {
         return new View.Builder().basePath(applicationContextPath).templateKey("index").build();
     }

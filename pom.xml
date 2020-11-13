@@ -19,7 +19,7 @@
         <artifact.timestamp>${maven.build.timestamp}</artifact.timestamp>
 
         <dropwizard.version>2.0.12</dropwizard.version>
-        <mainClass/>
+        <mainClass>peak.manaslu.aspera.Application</mainClass>
     </properties>
 
     <dependencyManagement>
