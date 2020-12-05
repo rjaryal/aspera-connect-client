@@ -27,8 +27,8 @@
         <div class="input-group">
             <input type="text" class="form-control" disabled id="upload-path" placeholder="File Path">
             <span class="input-group-btn">
-						<button class="btn btn-default" onclick="uploadFile();" id="upload-browse" type="button">Browse For File</button>
-				  	</span>
+			    <button class="btn btn-default" onclick="uploadFile();" id="upload-browse" type="button">Browse For File</button>
+			</span>
         </div>
     </div>
 </div>

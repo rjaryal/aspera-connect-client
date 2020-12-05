@@ -1,0 +1,50 @@
+
+# Apache HTTP Client
+httpClient:
+  timeout: 5000ms
+  connectionTimeout: 5000ms
+  timeToLive: 1h
+  cookiesEnabled: false
+  maxConnections: 1024
+  maxConnectionsPerRoute: 1024
+  keepAlive: 0ms
+  retries: 0
+  userAgent: Peak Manaslu (Aspera Connect)
+
+aspera:
+  remote_host: 172.27.16.130
+  remote_user: nodeuser
+  remote_password: node123
+  ssh_port: 22
+  udp_port: 33001
+  http_fallback: true
+  http_fallback_port: 9091
+  create_dir: true
+  destination_root: /
+  target_rate_kbps: 100000
+  resume: sparse_checksum
+
+# Jetty Server
+server:
+  type: default
+  adminContextPath: /
+  adminConnectors:
+    - type: http
+      port: 8085
+  rootPath: /
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 8095
+
+# Freemarker View
+views:
+  freemarker:
+    strict_syntax: true
+
+# App Logging
+logging:
+  level: INFO
+  loggers:
+    peak.manaslu: DEBUG
+

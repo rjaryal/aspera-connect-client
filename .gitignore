@@ -1,5 +1,4 @@
 .idea/
+.vagrant/
 *.iml
-config.yml
-config.yaml
 target/
