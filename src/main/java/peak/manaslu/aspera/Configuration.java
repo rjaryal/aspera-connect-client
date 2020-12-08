@@ -3,6 +3,9 @@ package peak.manaslu.aspera;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.client.HttpClientConfiguration;
+import io.dropwizard.server.DefaultServerFactory;
+import io.dropwizard.server.ServerFactory;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -14,10 +17,6 @@ public class Configuration extends io.dropwizard.Configuration {
     @Valid
     @NotNull
     private HttpClientConfiguration httpClient = new HttpClientConfiguration();
-
-    @Valid
-    @NotNull
-    private Map<String, Map<String, String>> viewsConfiguration;
 
     @Valid
     @NotNull
@@ -33,16 +32,6 @@ public class Configuration extends io.dropwizard.Configuration {
         this.httpClient = httpClient;
     }
 
-    @JsonProperty("views")
-    public Map<String, Map<String, String>> getViewsConfiguration() {
-        return viewsConfiguration;
-    }
-
-    @JsonProperty("views")
-    public void setViewsConfiguration(Map<String, Map<String, String>> viewsConfiguration) {
-        this.viewsConfiguration = viewsConfiguration;
-    }
-
     @JsonProperty("aspera")
     public Map<String, String> getAsperaConfiguration() {
         return asperaConfiguration;
@@ -51,6 +40,19 @@ public class Configuration extends io.dropwizard.Configuration {
     @JsonProperty("aspera")
     public void setAsperaConfiguration(Map<String, String> asperaConfiguration) {
         this.asperaConfiguration = asperaConfiguration;
+    }
+
+    @Override
+    @JsonProperty("server")
+    public ServerFactory getServerFactory() {
+        // fix erroneous rootPath
+        DefaultServerFactory server = ((DefaultServerFactory) super.getServerFactory());
+        final String rootPath = server.getJerseyRootPath().orElse("/");
+        if (rootPath.equals("") || rootPath.equals("/")) {
+            String randomRootPath = RandomStringUtils.randomAlphanumeric(7);
+            server.setJerseyRootPath("/" + randomRootPath);
+        }
+        return server;
     }
 
 }

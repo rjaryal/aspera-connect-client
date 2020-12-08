@@ -31,16 +31,12 @@ server:
   adminConnectors:
     - type: http
       port: 8085
-  rootPath: /
+  # Use root path anything other than "/"
+  # rootPath: /
   applicationContextPath: /
   applicationConnectors:
     - type: http
       port: 8095
-
-# Freemarker View
-views:
-  freemarker:
-    strict_syntax: true
 
 # App Logging
 logging:

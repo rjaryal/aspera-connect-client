@@ -1,15 +1,5 @@
 ---
 
-- name: selinux > Disable
-  selinux:
-    policy: targeted
-    state: disabled
-
-- name: firewall > Stop
-  systemd:
-    name: firewalld
-    state: stopped
-
 - name: install > Prerequisite Packages
   yum:
     name: "{{ aspera_prereq_packages }}"

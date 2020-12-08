@@ -1,5 +1,8 @@
 ---
 
+- name: Preperation
+  include_tasks: prepare.yml
+
 - name: Aspera Installation
   include_tasks: install.yml
 

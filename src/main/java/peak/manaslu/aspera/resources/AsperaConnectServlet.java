@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class AsperaConnectController extends HttpServlet {
+public class AsperaConnectServlet extends HttpServlet {
 
     private final CloseableHttpClient httpClient;
     private final String host;
     private final int port;
 
-    public AsperaConnectController(String host, int port, CloseableHttpClient httpClient) {
+    public AsperaConnectServlet(String host, int port, CloseableHttpClient httpClient) {
         this.host = host;
         this.port = port;
         this.httpClient = httpClient;
