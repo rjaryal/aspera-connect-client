@@ -9,7 +9,7 @@ BOX = {
   :name   => 'aspera.manaslu.peak'
 }
 
-ASPERA_PACKAGE = 'ibm-aspera-hsts-linux-64.rpm'
+ASPERA_PACKAGE = '/vagrant/ibm-aspera-hsts-linux-64.rpm'
 ASPERA_LICENSE = 'TransferServer-unlim.eval.aspera-license'
 
 Vagrant.configure("2") do |config|
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
       ab.verbose  = "vv"
       ab.extra_vars = {
         aspera_server_name:  BOX[:ip],
-        aspera_package:      "/vagrant/#{ASPERA_PACKAGE}",
+        aspera_package:      "#{ASPERA_PACKAGE}",
         aspera_license_text: "{{ lookup('file', playbook_dir ~ '/#{ASPERA_LICENSE}' ) }}"
       }
     end

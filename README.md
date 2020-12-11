@@ -55,6 +55,8 @@ Next, provide the following two files in this location.
 Then execute the `vagrant` command:
 
 ```shell script
+$: ansible-galaxy install -f -r requirements.yml
+
 $: vagrant up --provision
 
 # WAIT for the vagrant to complete its task

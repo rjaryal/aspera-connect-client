@@ -1,0 +1,5 @@
+---
+
+- src: https://github.com/rjaryal/ansible-role-aspera-server.git
+  version: v0.0.1
+  name: ansible-role-aspera-server
